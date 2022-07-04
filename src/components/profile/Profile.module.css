@@ -1,0 +1,8 @@
+.content{
+    grid-area: c;
+    background-color: #8654ff;
+}
+
+.item {
+    color: #fff5e5;
+}
