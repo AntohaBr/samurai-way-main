@@ -23,7 +23,7 @@ let state = {
             {id: 6, message: 'Yo'}
         ]
     }
-
+    sidebar:()
 
 }
 
