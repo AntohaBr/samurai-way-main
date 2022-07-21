@@ -9,10 +9,16 @@ import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 
-export type appType = {
-    appPosts: Array<NewAppType>
-    appDialogs:Array< newDialogsType>
-    appMessages:Array< newMessagesType>
+type AppStateType = {
+    appState: {
+        profilePage: {
+            posts: Array<NewAppType>
+        }
+        messagePage: {
+            dialogs: Array<newDialogsType>
+            messages: Array<newMessagesType>
+        }
+    }
 }
 
 export type NewAppType = {
@@ -29,7 +35,7 @@ export type newMessagesType = {
     message: string
 }
 
-const App = (props: appType) => {
+const App = (props: AppStateType) => {
 
     return (
         <BrowserRouter>
@@ -37,8 +43,9 @@ const App = (props: appType) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path="/dialogs" render={() => <Dialogs appDialogs={props.appDialogs} appMessages={props.appMessages}/>}/>
-                    <Route path="/profile" render={() => <Profile profilePosts={props.appPosts}/>}/>
+                    <Route path="/dialogs" render={() => <Dialogs appDialogs={props.appState.messagePage.dialogs}
+                                                                  appMessages={props.appState.messagePage.messages}/>}/>
+                    <Route path="/profile" render={() => <Profile profilePosts={props.appState.profilePage.posts}/>}/>
                     <Route path="/news" render={() => <News/>}/>
                     <Route path="/music" render={() => <Music/>}/>
                     <Route path="/settings" render={() => <Settings/>}/>
