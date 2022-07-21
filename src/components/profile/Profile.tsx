@@ -1,13 +1,20 @@
 import React from 'react';
-import MyPosts from "./my posts/MyPosts";
 import ProfileInfo from "./profikeInfo/ProfileInfo";
+import MyPosts from "./my posts/MyPosts";
+import {NewAppType} from "../../App";
 
 
-const Profile = () => {
+type profileType = {
+    profilePosts:Array<NewAppType>
+}
+
+const Profile = (props:profileType) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts
+                myPosts={props.profilePosts}
+            />
         </div>
     );
 }
